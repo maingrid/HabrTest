@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class MainPageTest {
     private WebDriver driver;
@@ -24,7 +25,7 @@ public class MainPageTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://www.habr.com/");
+
 
 
     }
@@ -36,19 +37,27 @@ public class MainPageTest {
 
     @Test
     public void checkFilterNewsPerDay() {
-        WebElement news = driver.findElement(By.xpath("//a[@aria-current='page' and @data-test-id='tab-link-active']"));
+        driver.get("https://www.habr.com/");
+        WebElement news = driver.findElement(By.xpath("//a[@href='/ru/news/']/ancestor::div[@class='tm-tabs__scroll-area']"));
         news.click();
-
         WebElement filter = driver.findElement(By.xpath("//button[@class]/parent::div[@class='tm-navigation-filters-spoiler__wrapper']"));
         filter.click();
-
         WebElement bestFilter = driver.findElement(By.xpath("//button[contains(text(), 'Лучшие')]"));
         bestFilter.click();
-
         WebElement ratingFilter = driver.findElement(By.xpath("//button[contains(text(),\"Сутки\")]"));
         ratingFilter.click();
+        WebElement acceptButton = driver.findElement(By.xpath("//button[contains(@class,' btn_solid btn_small') and contains(text(),'Применить')]"));
+        acceptButton.click();
+        assertTrue(driver.findElement(By.xpath("//time[@title='2023-06-03, 20:26']")).isDisplayed(), "нет такой даты");
 
     }
 
+    @Test
+    public void checkBlogRUVDS() {
+        driver.get("https://www.habr.com/");
+        WebElement companyRUVDS = driver.findElement(By.xpath("//a[@href='/ru/companies/ruvds/articles/']"));
+        companyRUVDS.click();
 
+        assertTrue(driver.findElement(By.xpath("//a[@href='/ru/companies/ruvds/profile/']/parent::div[@class='tm-company-card__info']")).isDisplayed());
+    }
 }
