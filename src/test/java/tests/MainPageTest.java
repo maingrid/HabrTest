@@ -1,4 +1,4 @@
-package com.example.habrtest;
+package tests;
 
 import org.junit.jupiter.api.*;
 
@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.MainPage;
 
 import java.time.Duration;
 
@@ -35,27 +36,19 @@ public class MainPageTest {
 
     @Test
     public void checkFilterNewsPerDay() {
+        MainPage mp = new MainPage(driver);
         driver.get("https://www.habr.com/");
-        WebElement news = driver.findElement(By.xpath("//a[@href='/ru/news/']/ancestor::div[@class='tm-tabs__scroll-area']"));
-        news.click();
-        WebElement filter = driver.findElement(By.xpath("//button[@class]/parent::div[@class='tm-navigation-filters-spoiler__wrapper']"));
-        filter.click();
-        WebElement bestFilter = driver.findElement(By.xpath("//button[contains(text(), 'Лучшие')]"));
-        bestFilter.click();
-        WebElement ratingFilter = driver.findElement(By.xpath("//button[contains(text(),\"Сутки\")]"));
-        ratingFilter.click();
-        WebElement acceptButton = driver.findElement(By.xpath("//button[contains(@class,' btn_solid btn_small') and contains(text(),'Применить')]"));
-        acceptButton.click();
-        assertTrue(driver.findElement(By.xpath("//article[@class='tm-articles-list__item'][1]")).isDisplayed(), "нет такой даты");
-
+        mp.clickButtonNews();
+        mp.clickButtonFilter();
+        mp.clickButtonBest();
+        mp.clickButtonAccept();
+        assertTrue(driver.findElement(By.xpath("//article[@class='tm-articles-list__item'][1]")).isDisplayed(), "нет заголовка");
     }
-
     @Test
     public void checkBlogRUVDS() {
+        MainPage mp = new MainPage(driver);
         driver.get("https://www.habr.com/");
-        WebElement companyRUVDS = driver.findElement(By.xpath("//a[@href='/ru/companies/ruvds/articles/']"));
-        companyRUVDS.click();
-        System.out.println();
+        mp.clickLinkCompanyRUVDS();
         assertTrue(driver.findElement(By.xpath("//a[@href='/ru/companies/ruvds/profile/']/parent::div[@class='tm-company-card__info']")).isDisplayed());
     }
 }
