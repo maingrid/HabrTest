@@ -25,13 +25,19 @@ public class MainPageTest extends BaseTest{
         DP  = new DevelopmentPage(getDriver());
     }
 
-
     @Test
     @DisplayName("проверка перехода на страницу 'разработка'")
     public void TC1_goToDevelopmentPageCheck() {
         mainPage.goToDevelopmentPage();
-        ExplicitWaitUrlToBe(10, "https://habr.com/ru/flows/develop/");
+        ExplicitWaitUrlToBe(5, "https://habr.com/ru/flows/develop/");
         assertEquals("https://habr.com/ru/flows/develop/", getDriver().getCurrentUrl(), "страница не открылась");
+    }
+    @Test
+    @DisplayName("проверка перехода на страницу компании RUVDS, через боковое правое меню")
+    public void TC16_goToRUVDSPage(){
+        mainPage.goToRUVDSPage();
+        ExplicitWaitUrlToBe(5,"https://habr.com/ru/companies/ruvds/articles/");
+        assertEquals("https://habr.com/ru/companies/ruvds/articles/", getDriver().getCurrentUrl(), "страница не открылась");
     }
 
 }

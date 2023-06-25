@@ -72,14 +72,22 @@ public class DevelopmentPageTest extends BaseTest{
     }
     @Test
     @DisplayName("проверка того, что отобразились статьи по заданному параметру 'рейтинг равен 10 или более' на странице")
-    public void TC8_(){
+    public void TC8_displayedArticlesWithRating10Check(){
         MP.goToDevelopmentPage();
         ExplicitWaitUrlToBe(3, "https://habr.com/ru/flows/develop/");
         DP.clickButtonFiltersDevelopmentPage();
         DP.clickButtonRating10();
         DP.clickButtonApply();
         AllureAttachmentsManager.screenshot();
-        assertTrue(DP.displayedRatingArticle());
+        assertTrue(DP.displayedRatingArticle(), "статьи не отобразились");
+    }
+    @Test
+    @DisplayName("проверка того, что выполняется переход на страницу с авторами")
+    public void TC9_GoToThePageAuthorsCheck(){
+        MP.goToDevelopmentPage();
+        ExplicitWaitUrlToBe(3, "https://habr.com/ru/flows/develop/");
+        DP.clickLinkAuthors();
+        assertEquals("https://habr.com/ru/flows/develop/authors/", getDriver().getCurrentUrl());
     }
 
 }

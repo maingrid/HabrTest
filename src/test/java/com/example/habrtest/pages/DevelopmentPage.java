@@ -14,6 +14,9 @@ public class DevelopmentPage {
 
     @FindBy(xpath = "//div[@class='tm-section-name']/h1[@class='tm-section-name__text']")
     private WebElement titleDevelopmentPage;
+    
+    @FindBy(xpath = "//div[@class='tm-tabs__scroll-area']//a[@href='/ru/flows/develop/authors/']")
+    private WebElement GoToThePageAuthors;
 
     //articles Elements
     @FindBy(xpath = "//div[@class='tm-articles-list']/article[1]")
@@ -43,6 +46,10 @@ public class DevelopmentPage {
     public Boolean displayedTitleDevelopmentPage(){
         LOG.info("проверка отображения заголовка на странице 'Разработка'");
         return titleDevelopmentPage.isDisplayed();
+    }
+    public void clickLinkAuthors(){
+        LOG.info("нажатие на ссылку 'Авторы'");
+        GoToThePageAuthors.click();
     }
 
     //articles methods

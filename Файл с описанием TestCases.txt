@@ -1,0 +1,21 @@
+TC1_goToDevelopmentPageCheck - Переход на вкладку "Разработка" , тест сравнивает ожидаемое значение URL и полученное значение+
+TC2_displayedTitleDevelopmentPageCheck - Отображение заголовка "Разработка" на странице, проверка отображения заголовка на странице "Разработка"+
+TC3_displayedArticleDevelopmentPage - Проверка того, что статьи имеются на странице, проверка первой статьи на отображение на странице+
+TC4_displayedAuthorArticleDevelopmentPageCheck -  проверка отображения автора у статьи на странице+ 
+TC5_displayedTitleArticleDevelopmentPageCheck -  проверка того, что отображается заголовок у статьи+
+TC6_displayedButtonApplyCheck -  Фильтр  на странице разработка, проверка отображения кнопки 'Применить'+
+TC7_displayedLevelComplexityArticle - Фильтр на страниц разработка, с настройкой уровня сложности статьи 'Простой'+
+TC8_displayedArticlesWithRating10Check - Фильтр на странице разработка, с настройкой рейтинга 10 или более
+TC9_GoToThePageAuthorsCheck - Переход на страницу авторов, проверка ожидаемой URL с фактической  +
+TC10_displayedAuthorsInListCheck - проверка того, что в списке авторов есть элементы+
+TC11_displayedLogoAuthorCheck - Проверка отображения фотографии автора 
+TC12_clickableLogoAuthorsCheck - Проверка того, что фотография автора кликабельная
+TC13_displayedActivityAuthorCheck - Проверка активности автора в виде количества написаных им статей
+TC14_clickableSearchFieldCheck - Проверка кликабельности поискового поля
+TC15_searchFieldCheck - Проверка работы поля поиска по заданному параметру
+TC16_goToRUVDSPage - Проверка перехода на страницу компании RUVDS, через боковое правое меню
+TC17_displayedTitleCompanyCheck - Проверка отображения заголовка на странице компании
+TC18_displayedArticlesCompanyRUVDSCheck - Проверка отображения статей в списке на странице компании
+TC19_goToTheProfileCompanyRUVDSCheck - Проверка перехода на страницу профиля компании
+TC20_goToTheStaffsCompanyRUVDS - Проверка перехода на страницу с сотрудниками компании
+TC21_goToTheNewsCompanyRUVDSCheck - Провепрка перехода на страницу с новостями компании
